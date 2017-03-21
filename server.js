@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require ('hbs');
 const fs = require('fs')
 
+const port = process.env.PORT || 3000;
+
 console.log('dir: ', __dirname);
 console.log('dir: ', __dirname + '/views/partials');
 var footerTemplate = fs.readFileSync(__dirname + '/views/partials/footer.hbs', 'utf8');
@@ -51,4 +53,6 @@ app.get('/bad', (req, res) => {
   });
 });
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
+});
